@@ -1,0 +1,41 @@
+	DLNode();
+	~DLNode();
+
+	bool IsEmpty();
+	void PrintAll();
+	Node* FindNode(int el);
+	Node* GetHead();
+	Node* GetNext(Node* ptr);
+	int GetHeadEl();
+	int GetNextEl(int el);
+	bool IsInList(int el);
+	void DeleteEl(int el);
+	void AddToHead(int el);
+	void AddToTail(int el);
+	int DeleteFromHead();
+	int DeleteFromTail();
+
+	DLNode* DLNode:: ExtractEven(){
+	LinkedNode* p = new LinkedNode();
+	Node* tmp = head;
+	while (tmp != NULL) {
+		if (tmp->info % 2 != 0) {
+			p->Insert(tmp->info);
+			if (tmp == head)
+				head = head->next;
+			tmp = tmp->next;
+		}
+		else if (tmp->next != NULL && tmp->next->info % 2 != 0) {
+			p->Insert(tmp->next->info);
+			tmp->next = tmp->next->next;
+			tmp = tmp->next;
+			//tmp = tmp->next->next;
+		}
+		else
+		tmp = tmp->next;
+	}
+	p->PrintNodes();
+	PrintNodes();
+	return p;
+	
+	}
